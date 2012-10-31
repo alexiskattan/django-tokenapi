@@ -13,11 +13,11 @@ from tokenapi.http import JSONResponse, JSONError
 @csrf_exempt
 def token_new(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
 
         if username and password:
-            user = authenticate(username=username, password=password)
+            user = authenticate(email=email, password=password)
 
             if user:
                 TOKEN_CHECK_ACTIVE_USER = getattr(settings, "TOKEN_CHECK_ACTIVE_USER", False)
