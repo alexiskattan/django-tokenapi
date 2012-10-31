@@ -16,7 +16,7 @@ def token_new(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        if username and password:
+        if email and password:
             user = authenticate(email=email, password=password)
 
             if user:
@@ -33,7 +33,7 @@ def token_new(request):
             else:
                 return JSONError("Unable to log you in, please try again.")
         else:
-            return JSONError("Must include 'username' and 'password' as POST parameters.")
+            return JSONError("Must include 'email' and 'password' as POST parameters.")
     else:
         return JSONError("Must access via a POST request.")
 
